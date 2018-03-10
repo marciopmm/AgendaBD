@@ -38,14 +38,15 @@ namespace AgendaBD
             // Cria um Leitor de Dados que recebe os dados da execução do comando
             SqlDataReader leitor = comando.ExecuteReader();
 
-            // Se houver pelo menos 1 linha, colocar os dados nos controles da tela
-            if (leitor.Read())
+            // Para cada linha do leitor (tabela), criar uma linha na lista de contatos
+            while (leitor.Read())
             {
-                lblID.Text = leitor["ContatoID"].ToString();
-                txtNome.Text = leitor["Nome"].ToString();
-                txtDataNasc.Text = leitor["DataNascimento"].ToString();
-                txtCelular.Text = leitor["Celular"].ToString();
-                txtEmail.Text = leitor["Email"].ToString();
+                ListViewItem item = new ListViewItem();
+                item.Text = leitor["Nome"].ToString();
+                item.SubItems.Add(leitor["Celular"].ToString());
+                item.SubItems.Add(leitor["Email"].ToString());
+
+                lstContatos.Items.Add(item);
             }
 
             // Fechar o leitor

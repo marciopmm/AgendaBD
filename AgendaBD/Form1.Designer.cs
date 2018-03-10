@@ -39,6 +39,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lstContatos = new System.Windows.Forms.ListView();
+            this.colNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCelular = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpContatos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +76,7 @@
             // 
             this.txtCelular.Location = new System.Drawing.Point(117, 126);
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(76, 20);
+            this.txtCelular.Size = new System.Drawing.Size(138, 20);
             this.txtCelular.TabIndex = 8;
             // 
             // txtNome
@@ -143,11 +147,41 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
+            // lstContatos
+            // 
+            this.lstContatos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colNome,
+            this.colCelular,
+            this.colEmail});
+            this.lstContatos.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lstContatos.Location = new System.Drawing.Point(0, 265);
+            this.lstContatos.Name = "lstContatos";
+            this.lstContatos.Size = new System.Drawing.Size(508, 193);
+            this.lstContatos.TabIndex = 1;
+            this.lstContatos.UseCompatibleStateImageBehavior = false;
+            this.lstContatos.View = System.Windows.Forms.View.Details;
+            // 
+            // colNome
+            // 
+            this.colNome.Text = "Nome";
+            this.colNome.Width = 197;
+            // 
+            // colCelular
+            // 
+            this.colCelular.Text = "Celular";
+            this.colCelular.Width = 123;
+            // 
+            // colEmail
+            // 
+            this.colEmail.Text = "Email";
+            this.colEmail.Width = 184;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 271);
+            this.ClientSize = new System.Drawing.Size(508, 458);
+            this.Controls.Add(this.lstContatos);
             this.Controls.Add(this.grpContatos);
             this.Name = "Form1";
             this.Text = "Agenda";
@@ -171,6 +205,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView lstContatos;
+        private System.Windows.Forms.ColumnHeader colNome;
+        private System.Windows.Forms.ColumnHeader colCelular;
+        private System.Windows.Forms.ColumnHeader colEmail;
     }
 }
 
