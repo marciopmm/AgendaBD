@@ -43,11 +43,20 @@
             this.colNome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCelular = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnApagar = new System.Windows.Forms.Button();
             this.grpContatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpContatos
             // 
+            this.grpContatos.Controls.Add(this.btnApagar);
+            this.grpContatos.Controls.Add(this.btnSalvar);
+            this.grpContatos.Controls.Add(this.btnNovo);
+            this.grpContatos.Controls.Add(this.btnEditar);
             this.grpContatos.Controls.Add(this.txtEmail);
             this.grpContatos.Controls.Add(this.txtCelular);
             this.grpContatos.Controls.Add(this.txtNome);
@@ -58,113 +67,134 @@
             this.grpContatos.Controls.Add(this.label3);
             this.grpContatos.Controls.Add(this.label2);
             this.grpContatos.Controls.Add(this.label1);
-            this.grpContatos.Location = new System.Drawing.Point(13, 13);
+            this.grpContatos.Location = new System.Drawing.Point(17, 16);
+            this.grpContatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpContatos.Name = "grpContatos";
-            this.grpContatos.Size = new System.Drawing.Size(484, 246);
+            this.grpContatos.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpContatos.Size = new System.Drawing.Size(675, 303);
             this.grpContatos.TabIndex = 0;
             this.grpContatos.TabStop = false;
             this.grpContatos.Text = "Contatos";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(117, 159);
+            this.txtEmail.Enabled = false;
+            this.txtEmail.Location = new System.Drawing.Point(156, 196);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(217, 20);
+            this.txtEmail.Size = new System.Drawing.Size(288, 22);
             this.txtEmail.TabIndex = 9;
             // 
             // txtCelular
             // 
-            this.txtCelular.Location = new System.Drawing.Point(117, 126);
+            this.txtCelular.Enabled = false;
+            this.txtCelular.Location = new System.Drawing.Point(156, 155);
+            this.txtCelular.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(138, 20);
+            this.txtCelular.Size = new System.Drawing.Size(183, 22);
             this.txtCelular.TabIndex = 8;
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(117, 59);
+            this.txtNome.Enabled = false;
+            this.txtNome.Location = new System.Drawing.Point(156, 73);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(217, 20);
+            this.txtNome.Size = new System.Drawing.Size(288, 22);
             this.txtNome.TabIndex = 7;
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(117, 29);
+            this.lblID.Location = new System.Drawing.Point(156, 36);
+            this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(16, 13);
+            this.lblID.Size = new System.Drawing.Size(23, 17);
             this.lblID.TabIndex = 6;
             this.lblID.Text = "---";
             // 
             // txtDataNasc
             // 
-            this.txtDataNasc.Location = new System.Drawing.Point(117, 92);
+            this.txtDataNasc.Enabled = false;
+            this.txtDataNasc.Location = new System.Drawing.Point(156, 113);
+            this.txtDataNasc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDataNasc.Name = "txtDataNasc";
-            this.txtDataNasc.Size = new System.Drawing.Size(76, 20);
+            this.txtDataNasc.Size = new System.Drawing.Size(100, 22);
             this.txtDataNasc.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(79, 162);
+            this.label5.Location = new System.Drawing.Point(105, 199);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.Size = new System.Drawing.Size(42, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Email";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(72, 129);
+            this.label4.Location = new System.Drawing.Point(96, 159);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(52, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Celular";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 95);
+            this.label3.Location = new System.Drawing.Point(9, 117);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.Size = new System.Drawing.Size(136, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Data de Nascimento";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 62);
+            this.label2.Location = new System.Drawing.Point(101, 76);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nome";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 30);
+            this.label1.Location = new System.Drawing.Point(124, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.Size = new System.Drawing.Size(21, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID";
             // 
             // lstContatos
             // 
             this.lstContatos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colID,
             this.colNome,
             this.colCelular,
             this.colEmail});
             this.lstContatos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lstContatos.Location = new System.Drawing.Point(0, 265);
+            this.lstContatos.FullRowSelect = true;
+            this.lstContatos.Location = new System.Drawing.Point(0, 327);
+            this.lstContatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstContatos.MultiSelect = false;
             this.lstContatos.Name = "lstContatos";
-            this.lstContatos.Size = new System.Drawing.Size(508, 193);
+            this.lstContatos.Size = new System.Drawing.Size(705, 237);
             this.lstContatos.TabIndex = 1;
             this.lstContatos.UseCompatibleStateImageBehavior = false;
             this.lstContatos.View = System.Windows.Forms.View.Details;
+            this.lstContatos.SelectedIndexChanged += new System.EventHandler(this.lstContatos_SelectedIndexChanged);
             // 
             // colNome
             // 
             this.colNome.Text = "Nome";
-            this.colNome.Width = 197;
+            this.colNome.Width = 259;
             // 
             // colCelular
             // 
@@ -174,15 +204,58 @@
             // colEmail
             // 
             this.colEmail.Text = "Email";
-            this.colEmail.Width = 184;
+            this.colEmail.Width = 237;
+            // 
+            // colID
+            // 
+            this.colID.Text = "ID";
+            this.colID.Width = 48;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(86, 257);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 39);
+            this.btnEditar.TabIndex = 10;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(189, 257);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 39);
+            this.btnNovo.TabIndex = 11;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Location = new System.Drawing.Point(291, 257);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 39);
+            this.btnSalvar.TabIndex = 12;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnApagar
+            // 
+            this.btnApagar.Location = new System.Drawing.Point(396, 257);
+            this.btnApagar.Name = "btnApagar";
+            this.btnApagar.Size = new System.Drawing.Size(75, 39);
+            this.btnApagar.TabIndex = 13;
+            this.btnApagar.Text = "Apagar";
+            this.btnApagar.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 458);
+            this.ClientSize = new System.Drawing.Size(705, 564);
             this.Controls.Add(this.lstContatos);
             this.Controls.Add(this.grpContatos);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Agenda";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -209,6 +282,11 @@
         private System.Windows.Forms.ColumnHeader colNome;
         private System.Windows.Forms.ColumnHeader colCelular;
         private System.Windows.Forms.ColumnHeader colEmail;
+        private System.Windows.Forms.ColumnHeader colID;
+        private System.Windows.Forms.Button btnApagar;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnEditar;
     }
 }
 
