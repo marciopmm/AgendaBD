@@ -95,10 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Agenda.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Agenda_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Agenda.mdf</DependentUpon>
     </Content>
   </ItemGroup>
