@@ -22,6 +22,9 @@ namespace AgendaBD
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Limpar os itens da lista de contatos
+            lstContatos.Items.Clear();
+
             // Criar conexão com o banco de dados SQL Server
             SqlConnection conexao = new SqlConnection();
 
@@ -187,20 +190,9 @@ namespace AgendaBD
             // Executar o comando de atualização
             comando.ExecuteNonQuery();
 
-            if (lblID.Text == "---")
-            {
-                // Executa o comando para obter o novo ID
-                object objNovo = comandoIdNovo.ExecuteScalar();
-
-                // Cria um item novo para a lista de contatos
-                ListViewItem item = new ListViewItem(objNovo.ToString());
-                item.SubItems.Add(txtNome.Text.Trim());
-                item.SubItems.Add(txtCelular.Text.Trim());
-                item.SubItems.Add(txtEmail.Text.Trim());
-
-                // Adiciona o item novo na lista de contatos
-                lstContatos.Items.Add(item);
-            }
+            // Releia os dados novos do Banco de Dados
+            // (usando o método de carga da nossa tela)
+            Form1_Load(null, null);
 
             // Fechar a conexão
             conexao.Close();
@@ -217,15 +209,67 @@ namespace AgendaBD
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
+            // Limpar os campos
+            LimparCampos();
+
+            // Habilitar as caixas de texto
+            TrocarHabilitacaoCampos(true);
+        }
+
+        private void btnApagar_Click(object sender, EventArgs e)
+        {
+            if (lstContatos.SelectedIndices.Count > 0)
+            {
+                // Identifica o ID de quem está selecionado
+                string id = lstContatos.SelectedItems[0].Text;
+
+                // Converte o ID em texto para um número
+                int contatoId = int.Parse(id);
+
+                // Criar conexão com o banco de dados SQL Server
+                SqlConnection conexao = new SqlConnection();
+
+                // Passar para a conexão qual é a string de conexão
+                conexao.ConnectionString = StringConexao;
+
+                // Criar comando para ler os dados da tabela
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conexao;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "DELETE Contato WHERE ContatoID = @ContatoID";
+
+                // Incluir o parâmetro "@ContatoID" para o comando
+                comando.Parameters.AddWithValue("@ContatoID", contatoId);
+
+                // Abrir conexão com o Banco de Dados
+                conexao.Open();
+
+                // Executar o comando sem esperar retorno de dados
+                comando.ExecuteNonQuery();
+
+                // Fechar a conexão
+                conexao.Close();
+
+                // Limpar os campos
+                LimparCampos();
+
+                // Releia os dados novos do Banco de Dados
+                // (usando o método de carga da nossa tela)
+                Form1_Load(null, null);
+
+                // Informa do sucesso
+                MessageBox.Show("Contato apagado!", "Pronto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void LimparCampos()
+        {
             // Limpar todos os campos
             lblID.Text = "---";
             txtNome.Text = "";
             txtDataNasc.Text = "";
             txtEmail.Text = "";
             txtCelular.Text = "";
-
-            // Habilitar as caixas de texto
-            TrocarHabilitacaoCampos(true);
         }
     }
 }
