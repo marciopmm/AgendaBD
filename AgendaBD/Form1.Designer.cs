@@ -76,6 +76,7 @@
             // 
             // btnApagar
             // 
+            this.btnApagar.Enabled = false;
             this.btnApagar.Location = new System.Drawing.Point(370, 200);
             this.btnApagar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnApagar.Name = "btnApagar";
@@ -87,6 +88,7 @@
             // 
             // btnSalvar
             // 
+            this.btnSalvar.Enabled = false;
             this.btnSalvar.Location = new System.Drawing.Point(289, 200);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSalvar.Name = "btnSalvar";
@@ -109,6 +111,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Enabled = false;
             this.btnEditar.Location = new System.Drawing.Point(130, 200);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEditar.Name = "btnEditar";

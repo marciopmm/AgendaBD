@@ -70,6 +70,12 @@ namespace AgendaBD
                 // Desabilitar as caixas de texto
                 TrocarHabilitacaoCampos(false);
 
+                // Habilitar o botão 'Editar'
+                btnEditar.Enabled = true;
+
+                // Habilitar o botão 'Apagar'
+                btnApagar.Enabled = true;
+
                 // Obter o texto da coluna 0 (ID)
                 string contatoId = lstContatos.SelectedItems[0].Text;
 
@@ -116,11 +122,28 @@ namespace AgendaBD
                 // Fechar a conexão
                 conexao.Close();
             }
+            else
+            {
+                LimparCampos();
+                TrocarHabilitacaoCampos(false);
+
+                // Desabilitar o botão 'Editar'
+                btnEditar.Enabled = false;
+
+                // Desabilitar o botão 'Apagar'
+                btnApagar.Enabled = false;
+
+                // Desabilitar o botão 'Salvar'
+                btnSalvar.Enabled = false;
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
             TrocarHabilitacaoCampos(true);
+
+            // Habilitar o botão 'Salvar'
+            btnSalvar.Enabled = true;
         }
 
         private void TrocarHabilitacaoCampos(bool habilitado)
@@ -200,6 +223,9 @@ namespace AgendaBD
             // Desabilitar as caixas de texto
             TrocarHabilitacaoCampos(false);
 
+            // Desabilitar botão 'Salvar'
+            btnSalvar.Enabled = false;
+
             // Exibir mensagem de confirmação
             MessageBox.Show("Salvo com sucesso!", 
                             "Muito bem!", 
@@ -214,51 +240,63 @@ namespace AgendaBD
 
             // Habilitar as caixas de texto
             TrocarHabilitacaoCampos(true);
+
+            // Habilitar o botão 'Salvar'
+            btnSalvar.Enabled = true;
         }
 
         private void btnApagar_Click(object sender, EventArgs e)
         {
             if (lstContatos.SelectedIndices.Count > 0)
             {
-                // Identifica o ID de quem está selecionado
-                string id = lstContatos.SelectedItems[0].Text;
+                // Obter a resposta da confirmação para a exclusão do contato
+                DialogResult confirmacao = MessageBox.Show("Tem certeza que deseja apagar o contato? Esta operação não poderá ser desfeita!", 
+                                "Confirmação", 
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question);
 
-                // Converte o ID em texto para um número
-                int contatoId = int.Parse(id);
+                if (confirmacao == DialogResult.Yes)
+                {
+                    // Identifica o ID de quem está selecionado
+                    string id = lstContatos.SelectedItems[0].Text;
 
-                // Criar conexão com o banco de dados SQL Server
-                SqlConnection conexao = new SqlConnection();
+                    // Converte o ID em texto para um número
+                    int contatoId = int.Parse(id);
 
-                // Passar para a conexão qual é a string de conexão
-                conexao.ConnectionString = StringConexao;
+                    // Criar conexão com o banco de dados SQL Server
+                    SqlConnection conexao = new SqlConnection();
 
-                // Criar comando para ler os dados da tabela
-                SqlCommand comando = new SqlCommand();
-                comando.Connection = conexao;
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = "DELETE Contato WHERE ContatoID = @ContatoID";
+                    // Passar para a conexão qual é a string de conexão
+                    conexao.ConnectionString = StringConexao;
 
-                // Incluir o parâmetro "@ContatoID" para o comando
-                comando.Parameters.AddWithValue("@ContatoID", contatoId);
+                    // Criar comando para ler os dados da tabela
+                    SqlCommand comando = new SqlCommand();
+                    comando.Connection = conexao;
+                    comando.CommandType = CommandType.Text;
+                    comando.CommandText = "DELETE Contato WHERE ContatoID = @ContatoID";
 
-                // Abrir conexão com o Banco de Dados
-                conexao.Open();
+                    // Incluir o parâmetro "@ContatoID" para o comando
+                    comando.Parameters.AddWithValue("@ContatoID", contatoId);
 
-                // Executar o comando sem esperar retorno de dados
-                comando.ExecuteNonQuery();
+                    // Abrir conexão com o Banco de Dados
+                    conexao.Open();
 
-                // Fechar a conexão
-                conexao.Close();
+                    // Executar o comando sem esperar retorno de dados
+                    comando.ExecuteNonQuery();
 
-                // Limpar os campos
-                LimparCampos();
+                    // Fechar a conexão
+                    conexao.Close();
 
-                // Releia os dados novos do Banco de Dados
-                // (usando o método de carga da nossa tela)
-                Form1_Load(null, null);
+                    // Limpar os campos
+                    LimparCampos();
 
-                // Informa do sucesso
-                MessageBox.Show("Contato apagado!", "Pronto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Releia os dados novos do Banco de Dados
+                    // (usando o método de carga da nossa tela)
+                    Form1_Load(null, null);
+
+                    // Informa do sucesso
+                    MessageBox.Show("Contato apagado!", "Pronto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
