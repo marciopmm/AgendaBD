@@ -144,6 +144,13 @@ namespace AgendaBD
 
             // Habilitar o botão 'Salvar'
             btnSalvar.Enabled = true;
+
+            // Desabilitar o botão 'Editar'
+            btnEditar.Enabled = false;
+
+            // Desabilitar o botão 'Apagar'
+            btnApagar.Enabled = false;
+
         }
 
         private void TrocarHabilitacaoCampos(bool habilitado)
@@ -156,6 +163,12 @@ namespace AgendaBD
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            // Validar os campos antes de salvar
+            if (!ValidarCampos())
+            {
+                return;
+            }
+
             // Criar conexão com o banco de dados SQL Server
             SqlConnection conexao = new SqlConnection();
 
@@ -308,6 +321,35 @@ namespace AgendaBD
             txtDataNasc.Text = "";
             txtEmail.Text = "";
             txtCelular.Text = "";
+        }
+
+        private bool ValidarCampos()
+        {
+            bool validado = true;
+            DateTime dataNasc;
+
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
+            {
+                MessageBox.Show("O campo 'Nome' deve ser preenchido.", "Validação",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                validado = false;
+            }
+
+            if (!DateTime.TryParse(txtDataNasc.Text, out dataNasc))
+            {
+                MessageBox.Show("O campo 'Data de Nascimento' deve ser preenchido, e deve possuir um formato válido.", "Validação",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                validado = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCelular.Text))
+            {
+                MessageBox.Show("O campo 'Celular' deve ser preenchido.", "Validação",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                validado = false;
+            }
+
+            return validado;
         }
     }
 }
